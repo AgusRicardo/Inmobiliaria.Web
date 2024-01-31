@@ -1,0 +1,73 @@
+<section class="section-propietarios">
+  <h2>Propietarios</h2>
+
+  <div>
+    <div class="example-button-row">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Buscar propietarios</mat-label>
+          <input matInput>
+          <mat-hint>Buscador</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-raised-button color="primary" class="new-propietarios" (click)="navigateTo('/propietarios/nuevo-propietarios')" routerLinkActive="active">Nuevo propietario</button>
+      </div>
+      </div>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="nro">
+          <th mat-header-cell *matHeaderCellDef class="propietarios-th"><b>Nro.</b></th>
+          <td mat-cell *matCellDef="let element" class="propietarios-th"> {{element.posicion}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="propietarios-th"><b>Nombre</b></th>
+          <td mat-cell *matCellDef="let element" class="propietarios-th"> {{element.nombre}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="apellido">
+          <th mat-header-cell *matHeaderCellDef class="propietarios-th"><b>Apellido</b></th>
+          <td mat-cell *matCellDef="let element" class="propietarios-th"> {{element.apellido}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dni">
+          <th mat-header-cell *matHeaderCellDef class="propietarios-th"><b>DNI</b></th>
+          <td mat-cell *matCellDef="let element" class="propietarios-th"> {{element.dni}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fecha_alta">
+          <th mat-header-cell *matHeaderCellDef class="propietarios-th"><b>Fecha de alta</b></th>
+          <td mat-cell *matCellDef="let element" class="propietarios-th"> {{element.fecha_alta}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef class="propietarios-th"></th>
+          <td mat-cell *matCellDef="let element" class="propietarios-th">
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon>edit</mat-icon>
+                <span>Editar</span>
+              </button>
+            </mat-menu>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                      showFirstLastButtons
+                      itemsPerPage="'Elementos por página:'">
+      </mat-paginator>
+    </div>
+  </div>
+</section>
+
+

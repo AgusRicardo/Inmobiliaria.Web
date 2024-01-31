@@ -1,0 +1,17 @@
+.section-inquilinos{
+  margin: 0px 20px 0px 20px;
+}
+.example-button-row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0px 5px 0px;
+  padding: 5px 0px 5px 0px;
+}
+.new-inquilino{
+  padding: 18px;
+  font-size: 15px;
+}
+.inquilinos-th{
+  text-align: center !important;
+}

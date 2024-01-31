@@ -1,0 +1,8 @@
+.header-inicio {
+  margin: 0px 20px 0px 20px;
+}
+.container-inicio{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}

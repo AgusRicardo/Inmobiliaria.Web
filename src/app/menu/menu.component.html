@@ -1,0 +1,50 @@
+<mat-drawer-container class="example-container" autosize>
+  <!-- NAVBAR -->
+    <mat-toolbar color="primary" class="navbar-main">
+      <button mat-icon-button class="example-icon" (click)="drawer.toggle()" matTooltip="Menú">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Gestor Inmobiliario</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon notifications-icon" matTooltip="Notificaciones">
+        <mat-icon>notifications</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" (click)="onClickLogout()"matTooltip="Cerrar sesión">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </mat-toolbar>
+  <!-- MENÚ -->
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <mat-list class="menu-list">
+        <mat-list-item class="btn-menu" (click)="navigateTo('/inicio')" routerLinkActive="active">
+          <mat-icon matListItemIcon class="color-white">home</mat-icon>
+          <div matListItemTitle class="color-white">Inicio</div>
+        </mat-list-item>
+        <mat-list-item class="btn-menu" (click)="navigateTo('/propietarios')" routerLinkActive="active">
+          <mat-icon matListItemIcon class="color-white">account_box</mat-icon>
+          <div matListItemTitle class="color-white">Propietarios</div>
+        </mat-list-item>
+        <mat-list-item class="btn-menu" (click)="navigateTo('/propiedades')" routerLinkActive="active">
+          <mat-icon matListItemIcon class="color-white">domain</mat-icon>
+          <div matListItemTitle class="color-white">Propiedades</div>
+        </mat-list-item>
+        <mat-list-item class="btn-menu" (click)="navigateTo('/inquilinos')" routerLinkActive="active">
+          <mat-icon matListItemIcon class="color-white">groups</mat-icon>
+          <div matListItemTitle class="color-white">Inquilinos</div>
+        </mat-list-item>
+        <mat-list-item class="btn-menu" (click)="navigateTo('/contratos')" routerLinkActive="active">
+          <mat-icon matListItemIcon class="color-white">edit_document</mat-icon>
+          <div matListItemTitle class="color-white">Contratos</div>
+        </mat-list-item>
+      </mat-list>
+      <div class="container-version">
+        <p>Agustin Ricardo - Versión 1.0</p>
+      </div>
+    </mat-drawer>
+    <!-- CONTENIDO -->
+    <div class="example-sidenav-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-container>
+
+

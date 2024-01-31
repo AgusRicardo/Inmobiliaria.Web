@@ -1,0 +1,33 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+.navbar-main {
+  --mat-toolbar-container-text-color: white;
+  --mat-toolbar-container-background-color: #3f51b5
+}
+.example-container{
+  height: 100vh !important;
+}
+.example-sidenav{
+  width: 16vw;
+  padding-top: 55px;
+  background-color: #3f51b5;
+}
+.btn-menu{
+  cursor: pointer !important;
+  padding: 10px;
+  color: white !important;
+}
+.btn-menu:hover{
+  background-color: hsl(231, 42%, 33%);
+}
+.color-white{
+  color: white !important;
+}
+.container-version{
+  height: 56% ;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+
+}

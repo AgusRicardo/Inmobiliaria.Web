@@ -1,0 +1,28 @@
+.section-nuevo-inquilino{
+  margin: 0px 20px 0px 20px;
+  display: flex;
+  justify-content: center;
+}
+.header-nuevo-inquilino {
+  margin: 0px 20px 0px 20px;
+}
+.card-nuevo-inquilino{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+.example-form{
+  display: flex;
+  flex-flow: column;
+  padding: 10px;
+  max-width: 700px;
+}
+.content-nuevo-inquilino{
+  width: 100%;
+}
+.container-btn-nuevo-inquilino{
+  display: flex;
+  justify-content: end;
+}
+
