@@ -1,15 +1,16 @@
 import { RouterModule, Routes } from '@angular/router';
-import { InquilinosComponent } from './inquilinos/inquilinos.component';
-import { InicioComponent } from './inicio/inicio.component';
-import { LoginComponent } from './login/login.component';
+import { InquilinosComponent } from './modules/layout/inquilinos/inquilinos.component';
 import { NgModule } from '@angular/core';
 import { loginGuard } from './guards/login.guard';
 import { noLoginGuard } from './guards/noLogin.guard';
-import { NuevoInquilinoComponent } from './nuevo-inquilino/nuevo-inquilino.component';
-import { PropietariosComponent } from './propietarios/propietarios.component';
-import { PropiedadesComponent } from './propiedades/propiedades.component';
-import { ContratosComponent } from './contratos/contratos.component';
-import { NuevoContratoComponent } from './nuevo-contrato/nuevo-contrato.component';
+import { PropiedadesComponent } from './modules/layout/propiedades/propiedades.component';
+import { ContratosComponent } from './modules/layout/contratos/contratos.component';
+import { LoginComponent } from './modules/layout/login/login.component';
+import { InicioComponent } from './modules/layout/inicio/inicio.component';
+import { NuevoInquilinoComponent } from './modules/layout/inquilinos/nuevo-inquilino/nuevo-inquilino.component';
+import { PropietariosComponent } from './modules/layout/propietarios/propietarios.component';
+import { NuevoContratoComponent } from './modules/layout/contratos/nuevo-contrato/nuevo-contrato.component';
+
 
 export const routes: Routes = [
   // Public routes

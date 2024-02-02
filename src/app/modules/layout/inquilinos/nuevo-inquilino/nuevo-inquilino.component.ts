@@ -4,7 +4,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {FormControl,FormGroupDirective,FormGroup,NgForm,Validators,FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from '../service/api.service';
+import { ApiService } from '../../../../service/api.service';
+
 
 @Component({
   selector: 'app-nuevo-inquilino',

@@ -1,24 +1,24 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatIconModule} from '@angular/material/icon';
-import { ApiService } from '../service/api.service';
+import { ApiService } from '../../../service/api.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-propiedades',
+  selector: 'app-contratos',
   standalone: true,
   imports: [MatTableModule, MatPaginator, MatPaginatorModule, MatButtonModule,MatInputModule, MatMenuModule, MatIconModule],
-  templateUrl: './propiedades.component.html',
-  styleUrl: './propiedades.component.css'
+  templateUrl: './contratos.component.html',
+  styleUrl: './contratos.component.css'
 })
-export class PropiedadesComponent {
-  displayedColumns: string[] = ['nro', 'propietario', 'tipo_propiedad', 'direccion', 'fecha_alta', 'acciones'];
+export class ContratosComponent {
+  displayedColumns: string[] = ['nro', 'propietario', 'propiedad', 'inquilino', 'fecha_inicio', 'fecha_fin', 'monto', 'fecha_alta', 'estado','acciones'];
   data: any[] = [];
-  dataSource = new MatTableDataSource<Propiedad>([]);
+  dataSource = new MatTableDataSource<Contrato>([]);
 
   navigateTo(route: string): void {
     this.router.navigate([route]);
@@ -36,13 +36,15 @@ export class PropiedadesComponent {
   }
 
   llenarData() {
-    this.apiService.getAllProperty().subscribe(data => {
-      this.data = data.map((propiedad: Propiedad, index: number) => ({
+    this.apiService.getAllContract().subscribe(data => {
+      this.data = data.map((contrato: Contrato, index: number) => ({
         posicion: index + 1,
-        propiedad: propiedad.propietario,
-        tipo: propiedad.tipo,
-        direccion: propiedad.direccion,
-        fecha_alta: this.formatoFecha(propiedad.fecha_alta)
+        propiedad: contrato.propietario,
+        inquilino: contrato.inquilino,
+        fecha_inicio: this.formatoFecha(contrato.fecha_inicio),
+        fecha_fin: this.formatoFecha(contrato.fecha_fin),
+        monto: contrato.monto,
+        fecha_alta: this.formatoFecha(contrato.fecha_alta)
       }));
       this.dataSource.data = this.data;
     });
@@ -53,10 +55,12 @@ export class PropiedadesComponent {
     return fechaFormateada;
   }
 }
-export interface Propiedad {
+export interface Contrato {
   propietario: string;
-  tipo: string;
-  direccion: string;
+  propiedad: string;
+  inquilino: string;
+  fecha_inicio: string;
+  fecha_fin: string;
+  monto: number;
   fecha_alta: string;
 }
-

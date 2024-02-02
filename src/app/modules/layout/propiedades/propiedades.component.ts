@@ -3,23 +3,22 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { ApiService } from '../service/api.service';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
+import { ApiService } from '../../../service/api.service';
 import { Router } from '@angular/router';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
-  selector: 'app-propietarios',
+  selector: 'app-propiedades',
   standalone: true,
   imports: [MatTableModule, MatPaginator, MatPaginatorModule, MatButtonModule,MatInputModule, MatMenuModule, MatIconModule],
-  templateUrl: './propietarios.component.html',
-  styleUrl: './propietarios.component.css'
+  templateUrl: './propiedades.component.html',
+  styleUrl: './propiedades.component.css'
 })
-
-export class PropietariosComponent {
-  displayedColumns: string[] = ['nro', 'nombre', 'apellido', 'dni', 'fecha_alta', 'acciones'];
+export class PropiedadesComponent {
+  displayedColumns: string[] = ['nro', 'propietario', 'tipo_propiedad', 'direccion', 'fecha_alta', 'acciones'];
   data: any[] = [];
-  dataSource = new MatTableDataSource<Propietario>([]);
+  dataSource = new MatTableDataSource<Propiedad>([]);
 
   navigateTo(route: string): void {
     this.router.navigate([route]);
@@ -37,13 +36,13 @@ export class PropietariosComponent {
   }
 
   llenarData() {
-    this.apiService.getAllOwner().subscribe(data => {
-      this.data = data.map((propietario: Propietario, index: number) => ({
+    this.apiService.getAllProperty().subscribe(data => {
+      this.data = data.map((propiedad: Propiedad, index: number) => ({
         posicion: index + 1,
-        nombre: propietario.nombre,
-        apellido: propietario.apellido,
-        dni: propietario.dni,
-        fecha_alta: this.formatoFecha(propietario.fecha_alta)
+        propiedad: propiedad.propietario,
+        tipo: propiedad.tipo,
+        direccion: propiedad.direccion,
+        fecha_alta: this.formatoFecha(propiedad.fecha_alta)
       }));
       this.dataSource.data = this.data;
     });
@@ -54,10 +53,10 @@ export class PropietariosComponent {
     return fechaFormateada;
   }
 }
-export interface Propietario {
-  posicion: number;
-  nombre: string;
-  apellido: string;
-  dni: string;
+export interface Propiedad {
+  propietario: string;
+  tipo: string;
+  direccion: string;
   fecha_alta: string;
 }
+

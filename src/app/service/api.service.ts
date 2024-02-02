@@ -32,9 +32,10 @@ export class ApiService {
   public getAllContract(): Observable<any> {
     return this.http.get<any>(`${this.urlApi}/Contrato/GetContratos`, {headers: this.createHeaders()});
   }
+  public searchPropietario(searchTerm: string): Observable<any> {
+    return this.http.get<any>(`${this.urlApi}/Propietarios/GetPropietarios/Propietario?searchTerm=${searchTerm}`, {headers: this.createHeaders()});
+  }
   public createPerson(formValue:any): Observable<any> {
-    console.log(formValue, "llega a api");
-
     return this.http.post<any>(`${this.urlApi}/Personas/CrearPersonas`, formValue, {headers: this.createHeaders()});
   }
   public login(formValue:any){

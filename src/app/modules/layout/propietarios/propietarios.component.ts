@@ -1,27 +1,26 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import {MatTableModule, MatTableDataSource} from '@angular/material/table';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator'
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
-import { ApiService } from '../service/api.service';
+import { Component, ViewChild } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+
 import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-
+import { ApiService } from '../../../service/api.service';
 
 @Component({
-  selector: 'app-inquilinos',
+  selector: 'app-propietarios',
   standalone: true,
   imports: [MatTableModule, MatPaginator, MatPaginatorModule, MatButtonModule,MatInputModule, MatMenuModule, MatIconModule],
-  templateUrl: './inquilinos.component.html',
-  styleUrl: './inquilinos.component.css'
+  templateUrl: './propietarios.component.html',
+  styleUrl: './propietarios.component.css'
 })
 
-
-export class InquilinosComponent implements AfterViewInit {
-  dataSource = new MatTableDataSource<Persona>([]);
+export class PropietariosComponent {
+  displayedColumns: string[] = ['nro', 'nombre', 'apellido', 'dni', 'fecha_alta', 'acciones'];
   data: any[] = [];
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol' , 'fecha_alta', 'acciones'];
+  dataSource = new MatTableDataSource<Propietario>([]);
 
   navigateTo(route: string): void {
     this.router.navigate([route]);
@@ -39,13 +38,13 @@ export class InquilinosComponent implements AfterViewInit {
   }
 
   llenarData() {
-    this.apiService.getAllTenants().subscribe(data => {
-      this.data = data.map((persona: Persona, index: number) => ({
+    this.apiService.getAllOwner().subscribe(data => {
+      this.data = data.map((propietario: Propietario, index: number) => ({
         posicion: index + 1,
-        nombre: persona.nombre,
-        apellido: persona.apellido,
-        dni: persona.dni,
-        fecha_alta: this.formatoFecha(persona.fecha_alta)
+        nombre: propietario.nombre,
+        apellido: propietario.apellido,
+        dni: propietario.dni,
+        fecha_alta: this.formatoFecha(propietario.fecha_alta)
       }));
       this.dataSource.data = this.data;
     });
@@ -56,15 +55,10 @@ export class InquilinosComponent implements AfterViewInit {
     return fechaFormateada;
   }
 }
-
-export interface Persona {
+export interface Propietario {
   posicion: number;
   nombre: string;
   apellido: string;
   dni: string;
   fecha_alta: string;
 }
-
-
-
-
