@@ -1,13 +1,13 @@
 <section class="section-nuevo-contratos">
   <mat-stepper #stepper class="container-stepper">
-    <!-- <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup" class="form-container" (ngSubmit)="onFormSubmit()">
+    <mat-step>
+      <form class="form-container" (ngSubmit)="onFormSubmit()">
         <ng-template matStepLabel>Seleccionar propietario</ng-template>
         <div class="container-search-propietario">
           <mat-form-field class="example-form-field">
             <mat-label>Buscar propietario</mat-label>
 
-            <input matInput type="text" [formControl]="searchTermControl">
+            <input matInput type="text">
           </mat-form-field>
           <div class="example-button-container">
             <button mat-mini-fab color="primary" type="submit">
@@ -23,83 +23,28 @@
 
         <app-propietarios-search [searchTerm]="searchTermControl.value"/>
       </div>
-    </mat-step> -->
-
+    </mat-step>
 
     <mat-step [stepControl]="secondFormGroup" label="Seleccionar propiedad">
-      <form [formGroup]="secondFormGroup">
-          <ng-template matStepLabel>Seleccionar propiedad</ng-template>
-          <mat-form-field class="mat-mdc-text-field-wrapper">
-            <mat-label>Seleccionar propiedad</mat-label>
-            <mat-select>
-              <mat-option>Ninguno</mat-option>
-              <mat-option value="option1">Option 1</mat-option>
-              <mat-option value="option2">Option 2</mat-option>
-              <mat-option value="option3">Option 3</mat-option>
-            </mat-select>
-          </mat-form-field>
-
+      <app-seleccionar-propiedad></app-seleccionar-propiedad>
         <div class="container-btn-newContract">
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
         </div>
-      </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup" label="Agregar inquilino">
-      <form [formGroup]="secondFormGroup">
-        <div>
-          <mat-form-field>
-            <mat-label>Nombre</mat-label>
-            <input matInput formControlName="secondCtrl" required>
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <mat-label>Apellido</mat-label>
-            <input matInput formControlName="secondCtrl" required>
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <mat-label>DNI</mat-label>
-            <input matInput formControlName="secondCtrl" required>
-          </mat-form-field>
-        </div>
-        <div class="container-btn-newContract">
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
+    <mat-step [stepControl]="thirdFormGroup" label="Agregar inquilino">
+      <app-agregar-inquilino [formGroup]="thirdFormGroup"></app-agregar-inquilino>
     </mat-step>
-    <mat-step [stepControl]="thirdFormGroup" label="Agregar garantes">
-      <form [formGroup]="thirdFormGroup">
-        <div>
-          <mat-form-field>
-            <mat-label>Nombre</mat-label>
-            <input matInput formControlName="secondCtrl" required>
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <mat-label>Apellido</mat-label>
-            <input matInput formControlName="secondCtrl" required>
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <mat-label>DNI</mat-label>
-            <input matInput formControlName="secondCtrl" required>
-          </mat-form-field>
-        </div>
-        <div class="container-btn-newContract">
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
+    <mat-step [stepControl]="roomFormGroup" label="Agregar garantes">
+      <app-agregar-garantes></app-agregar-garantes>
+      <div class="container-btn-newContract">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Generar contrato</ng-template>
-
+      <app-generar-contrato></app-generar-contrato>
       <div class="container-btn-newContract">
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>

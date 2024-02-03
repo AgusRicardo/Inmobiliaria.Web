@@ -8,6 +8,10 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatIconModule} from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { PropietariosSearchComponent } from '../../propietarios/propietarios-search/propietarios-search.component';
+import { AgregarGarantesComponent } from './agregar-garantes/agregar-garantes.component';
+import { AgregarInquilinoComponent } from './agregar-inquilino/agregar-inquilino.component';
+import { GenerarContratoComponent } from './generar-contrato/generar-contrato.component';
+import { SeleccionarPropiedadComponent } from './seleccionar-propiedad/seleccionar-propiedad.component';
 
 
 
@@ -24,7 +28,11 @@ import { PropietariosSearchComponent } from '../../propietarios/propietarios-sea
     MatSelectModule,
     MatIconModule,
     CommonModule,
-    PropietariosSearchComponent
+    PropietariosSearchComponent,
+    AgregarGarantesComponent,
+    AgregarInquilinoComponent,
+    GenerarContratoComponent,
+    SeleccionarPropiedadComponent
   ],
   templateUrl: './nuevo-contrato.component.html',
   styleUrl: './nuevo-contrato.component.css'
@@ -46,9 +54,9 @@ export class NuevoContratoComponent {
   }
 
 
-  // firstFormGroup = this._formBuilder.group({
-  //   firstCtrl: ['', Validators.required],
-  // });
+  firstFormGroup = this._formBuilder.group({
+    firstCtrl: ['', Validators.required],
+  });
   secondFormGroup = this._formBuilder.group({
     secondCtrl: ['', Validators.required],
   });
