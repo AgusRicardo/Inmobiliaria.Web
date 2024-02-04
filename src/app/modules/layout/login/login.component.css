@@ -20,3 +20,8 @@ body {
 .card-content{
   padding: 50px;
 }
+.container-spinner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

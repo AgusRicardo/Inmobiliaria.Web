@@ -1,12 +1,13 @@
-.section-nueva-inquilino{
+
+.section-nuevo-propietario{
   margin: 0px 20px 0px 20px;
 }
-.form-nueva-inquilino{
+.form-nuevo-propietario{
   display: flex;
   justify-content: center;
   flex-flow: column;
 }
-.container-nueva-inquilino{
+.container-nuevo-propietario{
   width: 100%;
   display: flex;
   justify-content: center;
@@ -15,6 +16,6 @@
   display: flex;
 justify-content: space-between;
 }
-.card-nueva-inquilino{
+.card-nuevo-propietario{
   padding: 30px 50px 30px 50px;
 }

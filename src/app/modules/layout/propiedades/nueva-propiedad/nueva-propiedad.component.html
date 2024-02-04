@@ -1,0 +1,27 @@
+<section class="section-nueva-propiedad">
+  <h2>Nueva propiedad</h2>
+  <div class="container-nueva-propiedad">
+    <mat-card class="card-nueva-propiedad">
+      <form action="" class="form-nueva-propiedad">
+        <h4>Completar datos de la propiedad:</h4>
+        <mat-form-field>
+          <mat-label>Propietario</mat-label>
+          <input matInput type="text" [(ngModel)]="nuevaPropiedad.id_propietario" [ngModelOptions]="{standalone: true}" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Tipo de propiedad</mat-label>
+          <input matInput type="text" [(ngModel)]="nuevaPropiedad.tipo" [ngModelOptions]="{standalone: true}" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Dirección</mat-label>
+          <input matInput type="text" [(ngModel)]="nuevaPropiedad.direccion" [ngModelOptions]="{standalone: true}" required>
+        </mat-form-field>
+        <div class="container-btn">
+          <button mat-raised-button color="warn" class="new-propiedad" (click)="navigateTo('/propiedades')" routerLinkActive="active">Cancelar</button>
+          <button mat-raised-button color="primary" class="new-propiedad" (click)="guardarPropiedad()">Guardar</button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</section>
+

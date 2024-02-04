@@ -7,11 +7,13 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { ApiService } from '../../../service/api.service';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-contratos',
   standalone: true,
-  imports: [MatTableModule, MatPaginator, MatPaginatorModule, MatButtonModule,MatInputModule, MatMenuModule, MatIconModule],
+  imports: [MatTableModule, MatPaginator, MatPaginatorModule, MatButtonModule,MatInputModule, MatMenuModule, MatIconModule, MatProgressSpinnerModule, CommonModule],
   templateUrl: './contratos.component.html',
   styleUrl: './contratos.component.css'
 })
@@ -19,6 +21,7 @@ export class ContratosComponent {
   displayedColumns: string[] = ['nro', 'propietario', 'propiedad', 'inquilino', 'fecha_inicio', 'fecha_fin', 'monto', 'fecha_alta', 'estado','acciones'];
   data: any[] = [];
   dataSource = new MatTableDataSource<Contrato>([]);
+  isLoading: boolean = true;
 
   navigateTo(route: string): void {
     this.router.navigate([route]);
@@ -47,6 +50,7 @@ export class ContratosComponent {
         fecha_alta: this.formatoFecha(contrato.fecha_alta)
       }));
       this.dataSource.data = this.data;
+      this.isLoading = false;
     });
   }
   formatoFecha(fecha: string): string {

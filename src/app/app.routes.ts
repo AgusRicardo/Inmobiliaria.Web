@@ -10,6 +10,8 @@ import { InicioComponent } from './modules/layout/inicio/inicio.component';
 import { NuevoInquilinoComponent } from './modules/layout/inquilinos/nuevo-inquilino/nuevo-inquilino.component';
 import { PropietariosComponent } from './modules/layout/propietarios/propietarios.component';
 import { NuevoContratoComponent } from './modules/layout/contratos/nuevo-contrato/nuevo-contrato.component';
+import { NuevoPropietarioComponent } from './modules/layout/propietarios/nuevo-propietario/nuevo-propietario.component';
+import { NuevaPropiedadComponent } from './modules/layout/propiedades/nueva-propiedad/nueva-propiedad.component';
 
 
 export const routes: Routes = [
@@ -25,6 +27,8 @@ export const routes: Routes = [
   { path: 'propiedades', component: PropiedadesComponent, canActivate: [loginGuard] },
   { path: 'contratos', component: ContratosComponent, canActivate: [loginGuard] },
   { path: 'contratos/nuevo-contrato', component: NuevoContratoComponent, canActivate: [loginGuard] },
+  { path: 'propietarios/nuevo-propietario', component: NuevoPropietarioComponent, canActivate: [loginGuard] },
+  { path: 'propiedades/nueva-propiedad', component: NuevaPropiedadComponent, canActivate: [loginGuard] },
 ];
 
 @NgModule({

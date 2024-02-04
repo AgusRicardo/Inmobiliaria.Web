@@ -1,0 +1,26 @@
+<section class="section-nuevo-propietario">
+  <h2>Nuevo propietario</h2>
+  <div class="container-nuevo-propietario">
+    <mat-card class="card-nuevo-propietario">
+      <form action="" class="form-nuevo-propietario">
+        <h4>Completar datos personales:</h4>
+        <mat-form-field>
+          <mat-label>Nombre</mat-label>
+          <input matInput type="text" [(ngModel)]="nuevoPropietario.nombre" [ngModelOptions]="{standalone: true}" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Apellido</mat-label>
+          <input matInput type="text" [(ngModel)]="nuevoPropietario.apellido" [ngModelOptions]="{standalone: true}" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>DNI</mat-label>
+          <input matInput type="text" [(ngModel)]="nuevoPropietario.dni" [ngModelOptions]="{standalone: true}" required>
+        </mat-form-field>
+        <div class="container-btn">
+          <button mat-raised-button color="warn" class="new-propietario" (click)="navigateTo('/propietarios')" routerLinkActive="active">Cancelar</button>
+          <button mat-raised-button color="primary" class="new-propietario" (click)="guardarPropietario()">Guardar</button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</section>

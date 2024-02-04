@@ -7,6 +7,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { ApiService } from '../../../service/api.service';
+import { CommonModule } from '@angular/common';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -19,13 +21,13 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MatButtonModule, MatCardModule, FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
+  imports: [MatButtonModule, MatCardModule, FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatProgressSpinnerModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
   formulario: FormGroup;
-
+  isLoading: boolean = false;
   usersService = inject(ApiService);
   router = inject(Router);
 
@@ -38,10 +40,21 @@ export class LoginComponent {
   matcher = new MyErrorStateMatcher();
 
   async onSubmit() {
-    const response = await this.usersService.login(this.formulario.value);
-    if(!response.error){
-      localStorage.setItem('token', response.result);
-      this.router.navigate(['/inicio']);
+    try {
+      if (this.formulario.valid) {
+        this.isLoading = true;
+        const response = await this.usersService.login(this.formulario.value);
+        if (!response.error) {
+          localStorage.setItem('token', response.result);
+          this.router.navigate(['/inicio']);
+        } else {
+          console.error('Error de inicio de sesión:', response.error);
+        }
+      } else {
+        console.error('Formulario no válido');
+      }
+    } catch (error) {
+      console.error('Error inesperado durante el inicio de sesión:', error);
     }
   }
 }

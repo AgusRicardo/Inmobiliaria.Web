@@ -7,7 +7,6 @@ export class InquilinoResponse {
 }
 
 export interface NewInquilinoResponde {
-  id_inquilino: number;
   nombre: string;
   apellido: string;
   dni: string;

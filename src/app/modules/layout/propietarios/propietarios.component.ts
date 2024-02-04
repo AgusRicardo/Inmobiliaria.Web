@@ -8,11 +8,13 @@ import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { ApiService } from '../../../service/api.service';
+import { CommonModule } from '@angular/common';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-propietarios',
   standalone: true,
-  imports: [MatTableModule, MatPaginator, MatPaginatorModule, MatButtonModule,MatInputModule, MatMenuModule, MatIconModule],
+  imports: [MatTableModule, MatPaginator, MatPaginatorModule, MatButtonModule,MatInputModule, MatMenuModule, MatIconModule, MatProgressSpinnerModule, CommonModule],
   templateUrl: './propietarios.component.html',
   styleUrl: './propietarios.component.css'
 })
@@ -21,6 +23,7 @@ export class PropietariosComponent {
   displayedColumns: string[] = ['nro', 'nombre', 'apellido', 'dni', 'fecha_alta', 'acciones'];
   data: any[] = [];
   dataSource = new MatTableDataSource<Propietario>([]);
+  isLoading: boolean = true;
 
   navigateTo(route: string): void {
     this.router.navigate([route]);
@@ -47,6 +50,7 @@ export class PropietariosComponent {
         fecha_alta: this.formatoFecha(propietario.fecha_alta)
       }));
       this.dataSource.data = this.data;
+      this.isLoading = false;
     });
   }
   formatoFecha(fecha: string): string {

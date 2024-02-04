@@ -35,8 +35,11 @@ export class ApiService {
   public searchPropietario(searchTerm: string): Observable<any> {
     return this.http.get<any>(`${this.urlApi}/Propietarios/GetPropietarios/Propietario?searchTerm=${searchTerm}`, {headers: this.createHeaders()});
   }
-  public createPerson(formValue:any): Observable<any> {
-    return this.http.post<any>(`${this.urlApi}/Personas/CrearPersonas`, formValue, {headers: this.createHeaders()});
+  public createPropietario(formValue:any): Observable<any> {
+    return this.http.post<any>(`${this.urlApi}/Propietarios/CrearPropietario`, formValue, {headers: this.createHeaders()});
+  }
+  public createInquilino(formValue:any): Observable<any> {
+    return this.http.post<any>(`${this.urlApi}/Inquilinos/CrearInquilino`, formValue, {headers: this.createHeaders()});
   }
   public login(formValue:any){
     return firstValueFrom(

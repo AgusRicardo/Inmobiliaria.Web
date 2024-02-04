@@ -8,12 +8,15 @@ import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { InquilinoResponse } from '../../models/inquilino.response';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { CommonModule } from '@angular/common';
+
 
 
 @Component({
   selector: 'app-inquilinos',
   standalone: true,
-  imports: [MatTableModule, MatPaginator, MatPaginatorModule, MatButtonModule,MatInputModule, MatMenuModule, MatIconModule],
+  imports: [MatTableModule, MatPaginator, MatPaginatorModule, MatButtonModule,MatInputModule, MatMenuModule, MatIconModule, MatProgressSpinnerModule, CommonModule],
   templateUrl: './inquilinos.component.html',
   styleUrl: './inquilinos.component.css'
 })
@@ -24,6 +27,7 @@ export class InquilinosComponent implements AfterViewInit {
   dataSource = new MatTableDataSource<InquilinoResponse>([]);
   data: any[] = [];
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol' , 'fecha_alta', 'acciones'];
+  isLoading: boolean = true;
 
   navigateTo(route: string): void {
     this.router.navigate([route]);
@@ -50,6 +54,7 @@ export class InquilinosComponent implements AfterViewInit {
         fecha_alta: this.formatoFecha(persona.fecha_alta)
       }));
       this.dataSource.data = this.data;
+      this.isLoading = false;
     });
   }
   formatoFecha(fecha: string): string {

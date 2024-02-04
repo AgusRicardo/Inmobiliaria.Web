@@ -2,21 +2,24 @@
   <mat-card class="card-content">
     <h3>Inicio de sesión</h3>
     <mat-card-content>
-      <form class="example-form" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+      <div *ngIf="isLoading" class="container-spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+      <form class="example-form" [formGroup]="formulario" (ngSubmit)="onSubmit()" *ngIf="!isLoading">
         <mat-form-field class="example-full-width">
           <mat-label>Email</mat-label>
           <input type="email" matInput formControlName="email" [errorStateMatcher]="matcher" placeholder="Ej. email@ejemplo.com">
-          <mat-error *ngIf="formulario.get('email').hasError('email') && !formulario.get('email').hasError('required')">
+          <mat-error *ngIf="formulario.get('email')?.hasError('email') && !formulario.get('email')?.hasError('required')">
             Ingrese un email válido
           </mat-error>
-          <mat-error *ngIf="formulario.get('email').hasError('required')">
+          <mat-error *ngIf="formulario.get('email')?.hasError('required')">
             El email es <strong>requerido</strong>
           </mat-error>
         </mat-form-field>
         <mat-form-field class="example-full-width">
           <mat-label>Contraseña</mat-label>
           <input type="password" matInput formControlName="password" [errorStateMatcher]="matcher" placeholder="******">
-          <mat-error *ngIf="formulario.get('password').hasError('required')">
+          <mat-error *ngIf="formulario.get('password')?.hasError('required')">
             La contraseña es <strong>requerida</strong>
           </mat-error>
         </mat-form-field>

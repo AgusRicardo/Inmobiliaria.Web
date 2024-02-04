@@ -15,3 +15,9 @@
 .propiedades-th{
   text-align: center !important;
 }
+.container-spinner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
