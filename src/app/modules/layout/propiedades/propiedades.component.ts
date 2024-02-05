@@ -9,6 +9,7 @@ import { ApiService } from '../../../service/api.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { Propietario } from '../propietarios/propietarios.component';
 
 @Component({
   selector: 'app-propiedades',
@@ -42,7 +43,7 @@ export class PropiedadesComponent {
     this.apiService.getAllProperty().subscribe(data => {
       this.data = data.map((propiedad: Propiedad, index: number) => ({
         posicion: index + 1,
-        propiedad: propiedad.propietario,
+        propietario: propiedad.propietario.nombre + ', ' + propiedad.propietario.apellido,
         tipo: propiedad.tipo,
         direccion: propiedad.direccion,
         fecha_alta: this.formatoFecha(propiedad.fecha_alta)
@@ -58,7 +59,7 @@ export class PropiedadesComponent {
   }
 }
 export interface Propiedad {
-  propietario: string;
+  propietario: Propietario;
   tipo: string;
   direccion: string;
   fecha_alta: string;

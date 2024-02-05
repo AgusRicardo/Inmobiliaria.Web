@@ -9,6 +9,10 @@ import { ApiService } from '../../../service/api.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { Propietario } from '../propietarios/propietarios.component';
+import { Propiedad } from '../propiedades/propiedades.component';
+import { InquilinoResponse } from '../../models/inquilino.response';
+import { Estado } from '../../models/estado.response';
 
 @Component({
   selector: 'app-contratos',
@@ -42,12 +46,14 @@ export class ContratosComponent {
     this.apiService.getAllContract().subscribe(data => {
       this.data = data.map((contrato: Contrato, index: number) => ({
         posicion: index + 1,
-        propiedad: contrato.propietario,
-        inquilino: contrato.inquilino,
+        propietario: contrato.propietario.nombre + ', ' + contrato.propietario.apellido,
+        propiedad: contrato.propiedad.tipo,
+        inquilino: contrato.inquilino.nombre + ', ' + contrato.inquilino.apellido,
         fecha_inicio: this.formatoFecha(contrato.fecha_inicio),
         fecha_fin: this.formatoFecha(contrato.fecha_fin),
         monto: contrato.monto,
-        fecha_alta: this.formatoFecha(contrato.fecha_alta)
+        fecha_alta: this.formatoFecha(contrato.fecha_alta),
+        estado: contrato.estado.descripcion,
       }));
       this.dataSource.data = this.data;
       this.isLoading = false;
@@ -60,11 +66,12 @@ export class ContratosComponent {
   }
 }
 export interface Contrato {
-  propietario: string;
-  propiedad: string;
-  inquilino: string;
+  propietario: Propietario;
+  propiedad: Propiedad;
+  inquilino: InquilinoResponse;
   fecha_inicio: string;
   fecha_fin: string;
   monto: number;
   fecha_alta: string;
+  estado: Estado;
 }
