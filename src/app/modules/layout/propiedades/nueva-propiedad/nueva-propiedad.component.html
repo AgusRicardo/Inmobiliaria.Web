@@ -6,7 +6,10 @@
         <h4>Completar datos de la propiedad:</h4>
         <mat-form-field>
           <mat-label>Propietario</mat-label>
-          <input matInput type="text" [(ngModel)]="nuevaPropiedad.id_propietario" [ngModelOptions]="{standalone: true}" required>
+          <input matInput type="text" [(ngModel)]="inputSearch" [ngModelOptions]="{standalone: true}" (change)="onInputChange($event)" required>
+          <mat-select #select (selectionChange)="onPropietarioSelected($event.value)">
+            <mat-option *ngFor="let propietario of propietariosEncontrados" [value]="propietario.id_propietario">{{propietario.nombre+', '+propietario.apellido}}</mat-option>
+          </mat-select>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Tipo de propiedad</mat-label>

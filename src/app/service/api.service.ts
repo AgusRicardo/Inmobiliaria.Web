@@ -6,8 +6,8 @@ import { Observable, firstValueFrom } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  private urlApi = 'https://api-inmobiliaria.azurewebsites.net/api';
-  //private urlApi = 'https://localhost:7001/api';
+  //private urlApi = 'https://api-inmobiliaria.azurewebsites.net/api';
+  private urlApi = 'https://localhost:7001/api';
 
   constructor(private http: HttpClient) { }
 
@@ -37,6 +37,9 @@ export class ApiService {
   }
   public createPropietario(formValue:any): Observable<any> {
     return this.http.post<any>(`${this.urlApi}/Propietarios/CrearPropietario`, formValue, {headers: this.createHeaders()});
+  }
+  public createPropiedad(formValue:any): Observable<any> {
+    return this.http.post<any>(`${this.urlApi}/Propiedades/CrearPropiedades`, formValue, {headers: this.createHeaders()});
   }
   public createInquilino(formValue:any): Observable<any> {
     return this.http.post<any>(`${this.urlApi}/Inquilinos/CrearInquilino`, formValue, {headers: this.createHeaders()});
