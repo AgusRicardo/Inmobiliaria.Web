@@ -23,7 +23,7 @@
         <!-- Position Column -->
         <ng-container matColumnDef="nro">
           <th mat-header-cell *matHeaderCellDef class="propiedades-th"><b>Nro.</b></th>
-          <td mat-cell *matCellDef="let element" class="propiedades-th"> {{element.posicion}} </td>
+          <td mat-cell *matCellDef="let element" class="propiedades-th"> {{element.id_propiedad}} </td>
         </ng-container>
 
         <ng-container matColumnDef="propietario">
@@ -65,7 +65,7 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
 
-      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+      <mat-paginator [pageSizeOptions]="[10, 20, 50]"
                       showFirstLastButtons
                       itemsPerPage="'Elementos por página:'">
       </mat-paginator>

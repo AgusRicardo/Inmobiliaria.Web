@@ -42,7 +42,7 @@ export class PropiedadesComponent {
   llenarData() {
     this.apiService.getAllProperty().subscribe(data => {
       this.data = data.map((propiedad: Propiedad, index: number) => ({
-        posicion: index + 1,
+        id_propiedad: propiedad.id_propiedad,
         propietario: propiedad.propietario.nombre + ', ' + propiedad.propietario.apellido,
         tipo: propiedad.tipo,
         direccion: propiedad.direccion,
@@ -59,6 +59,7 @@ export class PropiedadesComponent {
   }
 }
 export interface Propiedad {
+  id_propiedad: number;
   propietario: Propietario;
   tipo: string;
   direccion: string;

@@ -3,7 +3,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-
 import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -14,7 +13,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @Component({
   selector: 'app-propietarios',
   standalone: true,
-  imports: [MatTableModule, MatPaginator, MatPaginatorModule, MatButtonModule,MatInputModule, MatMenuModule, MatIconModule, MatProgressSpinnerModule, CommonModule],
+  imports: [MatTableModule, MatPaginator, MatPaginatorModule, MatButtonModule,MatInputModule, MatMenuModule, MatIconModule, MatProgressSpinnerModule, CommonModule ],
   templateUrl: './propietarios.component.html',
   styleUrl: './propietarios.component.css'
 })
@@ -24,6 +23,7 @@ export class PropietariosComponent {
   data: any[] = [];
   dataSource = new MatTableDataSource<Propietario>([]);
   isLoading: boolean = true;
+  noData = false;
 
   navigateTo(route: string): void {
     this.router.navigate([route]);
@@ -43,14 +43,19 @@ export class PropietariosComponent {
   llenarData() {
     this.apiService.getAllOwner().subscribe(data => {
       this.data = data.map((propietario: Propietario, index: number) => ({
-        posicion: index + 1,
+        id: propietario.id_propietario,
         nombre: propietario.nombre,
         apellido: propietario.apellido,
         dni: propietario.dni,
         fecha_alta: this.formatoFecha(propietario.fecha_alta)
       }));
-      this.dataSource.data = this.data;
-      this.isLoading = false;
+      if (this.data.length > 0) {
+        this.dataSource.data = this.data;
+        this.isLoading = false;
+      }else{
+        this.noData = true;
+        this.isLoading = false;
+      }
     });
   }
   formatoFecha(fecha: string): string {
@@ -60,7 +65,7 @@ export class PropietariosComponent {
   }
 }
 export interface Propietario {
-  posicion: number;
+  id_propietario: number;
   nombre: string;
   apellido: string;
   dni: string;

@@ -47,7 +47,7 @@ export class InquilinosComponent implements AfterViewInit {
   llenarData() {
     this.apiService.getAllTenants().subscribe(data => {
       this.data = data.map((persona: InquilinoResponse, index: number) => ({
-        posicion: index + 1,
+        id_inquilino: persona.id_inquilino,
         nombre: persona.nombre,
         apellido: persona.apellido,
         dni: persona.dni,

@@ -9,7 +9,7 @@
   height: 100vh !important;
 }
 .example-sidenav{
-  width: 16vw;
+  width: 15.5vw;
   padding-top: 55px;
   background-color: #3f51b5;
 }
@@ -28,5 +28,17 @@
   display: flex;
   justify-content: center;
   align-items: end;
-
+}
+.menu-sections{
+  padding: 10px;
+  color: white;
+}
+.desplegable-notificaciones{
+  padding: 10px;
+}
+.container-notify{
+  color: black;
+  font-style: italic;
+  font-size: 12.5px;
+  padding: 10px;
 }

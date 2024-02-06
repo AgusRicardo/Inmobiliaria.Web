@@ -45,7 +45,7 @@ export class ContratosComponent {
   llenarData() {
     this.apiService.getAllContract().subscribe(data => {
       this.data = data.map((contrato: Contrato, index: number) => ({
-        posicion: index + 1,
+        id_contrato: contrato.id_contrato,
         propietario: contrato.propietario.nombre + ', ' + contrato.propietario.apellido,
         propiedad: contrato.propiedad.tipo,
         inquilino: contrato.inquilino.nombre + ', ' + contrato.inquilino.apellido,
@@ -66,6 +66,7 @@ export class ContratosComponent {
   }
 }
 export interface Contrato {
+  id_contrato: number;
   propietario: Propietario;
   propiedad: Propiedad;
   inquilino: InquilinoResponse;
