@@ -10,9 +10,9 @@
           <mat-hint>Buscador</mat-hint>
         </mat-form-field>
       </div>
-      <div>
+      <!-- <div>
         <button mat-raised-button color="primary" class="new-inquilino" (click)="navigateTo('/inquilinos/nuevo-inquilino')" routerLinkActive="active">Nuevo inquilino</button>
-      </div>
+      </div> -->
       </div>
     <div class="mat-elevation-z8">
       <div *ngIf="isLoading" class="container-spinner">
@@ -52,7 +52,7 @@
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item>
+              <button mat-menu-item (click)="openDialogCustom(element, editarInquilino)">
                 <mat-icon>edit</mat-icon>
                 <span>Editar</span>
               </button>
@@ -72,3 +72,28 @@
   </div>
 </section>
 
+<ng-template #editarInquilino let-inquilino="inquilino">
+  <div>
+    <h2 mat-dialog-title>Editar inquilino: <b>{{inquilino.apellido+', '+inquilino.nombre}}</b> </h2>
+  </div>
+  <mat-dialog-content class="container-edit-propietario">
+    <form class="container-edit-propietario" [formGroup]="formGroup">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput type="text" value="{{inquilino.nombre}}" formControlName="nombre">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Apellido</mat-label>
+        <input matInput type="text" value="{{inquilino.apellido}}" formControlName="apellido">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>DNI</mat-label>
+        <input matInput type="text" value="{{inquilino.dni}}" formControlName="dni">
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions class="container-template-btn">
+    <button mat-button mat-dialog-close color="warn">Cerrar</button>
+    <button mat-button mat-dialog-close color="primary" (click)="onSave()">Guardar cambios</button>
+  </mat-dialog-actions>
+</ng-template>

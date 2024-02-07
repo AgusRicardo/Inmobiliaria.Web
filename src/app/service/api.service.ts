@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, firstValueFrom } from 'rxjs';
+import { Observable, catchError, firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +43,12 @@ export class ApiService {
   }
   public createInquilino(formValue:any): Observable<any> {
     return this.http.post<any>(`${this.urlApi}/Inquilinos/CrearInquilino`, formValue, {headers: this.createHeaders()});
+  }
+  public editPropietario(id: number, propietarioData: any): Observable<any> {
+    return this.http.put<any>(`${this.urlApi}/Propietarios/EditarPropietario/${id}`, propietarioData, {headers: this.createHeaders()});
+  }
+  public editInquilino(id: number, inquilinoData: any): Observable<any> {
+    return this.http.put<any>(`${this.urlApi}/Inquilinos/EditarInquilino/${id}`, inquilinoData, {headers: this.createHeaders()});
   }
   public login(formValue:any){
     return firstValueFrom(

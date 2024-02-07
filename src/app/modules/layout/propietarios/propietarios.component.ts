@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -9,16 +9,21 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ApiService } from '../../../service/api.service';
 import { CommonModule } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { DialogService } from '../../../service/dialog.service';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
+import { SnackbarService } from '../../assets/snackbar.service';
 
 @Component({
   selector: 'app-propietarios',
   standalone: true,
-  imports: [MatTableModule, MatPaginator, MatPaginatorModule, MatButtonModule,MatInputModule, MatMenuModule, MatIconModule, MatProgressSpinnerModule, CommonModule ],
+  imports: [MatDialogActions,MatDialogContent,ReactiveFormsModule, MatDialogTitle,MatDialogClose, MatDialogContent,MatDialogActions, MatTableModule, MatPaginator, MatPaginatorModule, MatButtonModule,MatInputModule, MatMenuModule, MatIconModule, MatProgressSpinnerModule, CommonModule],
   templateUrl: './propietarios.component.html',
   styleUrl: './propietarios.component.css'
 })
-
 export class PropietariosComponent {
+  propietarioOriginal: Propietario | null = null;
+  formGroup: FormGroup;
   displayedColumns: string[] = ['nro', 'nombre', 'apellido', 'dni', 'fecha_alta', 'acciones'];
   data: any[] = [];
   dataSource = new MatTableDataSource<Propietario>([]);
@@ -29,7 +34,19 @@ export class PropietariosComponent {
     this.router.navigate([route]);
   }
 
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(private apiService: ApiService, private router: Router, private dialogService: DialogService, private fb: FormBuilder, private snackbarService: SnackbarService) {
+    this.formGroup = this.fb.group({
+      nombre: [''],
+      apellido: [''],
+      dni: ['']
+    });
+  }
+
+  openDialogCustom(propietario: Propietario, template: TemplateRef<any>) {
+    this.propietarioOriginal = propietario;
+    this.formGroup.patchValue(propietario);
+    this.dialogService.openDialogWithTemplate( propietario, template );
+  }
 
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
@@ -40,10 +57,32 @@ export class PropietariosComponent {
     this.llenarData();
   }
 
+  onSave() {
+    this.formGroup.patchValue({
+      id_propietario: this.propietarioOriginal?.id_propietario
+    });
+    const propietarioModificado: Propietario = this.formGroup.value;
+    const id = this.propietarioOriginal?.id_propietario;
+    if (id !== undefined) {
+      const propietarioModificado: Propietario = { ...this.formGroup.value };
+      this.apiService.editPropietario(id, propietarioModificado).subscribe(
+        response => {
+          this.snackbarService.openSnackBar(`Propietario nro. ${id} editado correctamente!`, 'Cerrar', 3000);
+          location.reload();
+        },
+        Error => {
+          this.snackbarService.openSnackBar('Error al editar el propietario', 'Cerrar', 3000);
+        }
+      );
+    } else {
+      console.error('No se pudo obtener el ID del propietario original');
+    }
+  }
+
   llenarData() {
     this.apiService.getAllOwner().subscribe(data => {
       this.data = data.map((propietario: Propietario, index: number) => ({
-        id: propietario.id_propietario,
+        id_propietario: propietario.id_propietario,
         nombre: propietario.nombre,
         apellido: propietario.apellido,
         dni: propietario.dni,

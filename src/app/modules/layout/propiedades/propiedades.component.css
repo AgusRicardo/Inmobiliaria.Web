@@ -20,4 +20,13 @@
   justify-content: center;
   align-items: center;
 }
-
+.container-edit-propietario{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-flow: column wrap !important;
+}
+.container-template-btn{
+  display: flex;
+  justify-content: end;
+}
