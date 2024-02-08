@@ -11,7 +11,7 @@
         </mat-form-field>
       </div>
       <div>
-        <button mat-raised-button color="primary" class="new-propietarios" (click)="navigateTo('/propietarios/nuevo-propietario')" routerLinkActive="active">Nuevo propietario</button>
+        <button mat-raised-button class="new-propietarios btn_global_design" (click)="navigateTo('/propietarios/nuevo-propietario')" routerLinkActive="active">Nuevo propietario</button>
       </div>
       </div>
     <div class="mat-elevation-z8">
@@ -93,7 +93,7 @@
   </mat-dialog-content>
   <mat-dialog-actions class="container-template-btn">
     <button mat-button mat-dialog-close color="warn">Cerrar</button>
-    <button mat-button mat-dialog-close color="primary" (click)="onSave()">Guardar cambios</button>
+    <button mat-button mat-dialog-close class="btn-dialog-design" (click)="onSave()">Guardar cambios</button>
   </mat-dialog-actions>
 </ng-template>
 

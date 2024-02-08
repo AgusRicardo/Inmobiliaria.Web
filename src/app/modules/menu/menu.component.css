@@ -3,15 +3,21 @@
 }
 .navbar-main {
   --mat-toolbar-container-text-color: white;
-  --mat-toolbar-container-background-color: #3f51b5
+  --mat-toolbar-container-background-color: #352F44
+
 }
 .example-container{
-  height: 100vh !important;
+  height: 93.1vh !important;
 }
 .example-sidenav{
   width: 15.5vw;
-  padding-top: 55px;
-  background-color: #3f51b5;
+  padding-top: 10px;
+  background-color: #5C5470;
+}
+.container-menu-design{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .btn-menu{
   cursor: pointer !important;
@@ -19,10 +25,10 @@
   color: white !important;
 }
 .btn-menu:hover{
-  background-color: hsl(231, 42%, 33%);
+  background-color: #B9B4C7;
 }
 .color-white{
-  color: white !important;
+  color: #FAF0E6 !important;
 }
 .container-version{
   display: flex;
@@ -31,7 +37,7 @@
 }
 .menu-sections{
   padding: 10px;
-  color: white;
+  color: black;
 }
 .desplegable-notificaciones{
   padding: 10px;
@@ -41,4 +47,7 @@
   font-style: italic;
   font-size: 12.5px;
   padding: 10px;
+}
+.example-icon{
+  color: #FAF0E6;
 }

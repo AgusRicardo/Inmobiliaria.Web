@@ -30,3 +30,10 @@
   display: flex;
   justify-content: end;
 }
+.btn_global_design{
+  background-color: #352F44 !important;
+  color: white !important;
+}
+.btn-dialog-design{
+  color: #352F44 !important;
+}

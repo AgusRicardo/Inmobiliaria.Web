@@ -6,3 +6,7 @@
   justify-content: center;
   text-align: center;
 }
+.btn_global_design{
+  background-color: #352F44 !important;
+  color: white !important;
+}

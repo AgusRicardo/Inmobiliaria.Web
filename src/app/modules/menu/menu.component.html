@@ -1,36 +1,38 @@
-<mat-drawer-container class="example-container" autosize>
-  <!-- NAVBAR -->
-    <mat-toolbar color="primary" class="navbar-main">
+<!-- NAVBAR -->
+  <mat-toolbar color="primary" class="navbar-main">
+    <div class="container-btn-menu">
       <button mat-icon-button class="example-icon" (click)="drawer.toggle()" matTooltip="Menú">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>{{this.decodedToken.inmobiliaria_nombre}}</span>
-      <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon notifications-icon" matTooltip="Notificaciones" [matMenuTriggerFor]="menu">
-        <mat-icon>notifications</mat-icon>
-        <mat-menu #menu="matMenu">
-          <div class="desplegable-notificaciones">
-            <span>Notificaciones</span>
-            <mat-divider></mat-divider>
-            <div class="container-notify">
-              <span>Por el momento no hay notificaciones.</span>
-            </div>
+    </div>
+    <span>{{this.decodedToken.inmobiliaria_nombre}}</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon notifications-icon" matTooltip="Notificaciones" [matMenuTriggerFor]="menu">
+      <mat-icon>notifications</mat-icon>
+      <mat-menu #menu="matMenu">
+        <div class="desplegable-notificaciones">
+          <span>Notificaciones</span>
+          <mat-divider></mat-divider>
+          <div class="container-notify">
+            <span>Por el momento no hay notificaciones.</span>
           </div>
-        </mat-menu>
-      </button>
-      <button mat-icon-button class="example-icon" (click)="onClickLogout()"matTooltip="Cerrar sesión">
-        <mat-icon>logout</mat-icon>
-      </button>
-    </mat-toolbar>
+        </div>
+      </mat-menu>
+    </button>
+    <button mat-icon-button class="example-icon" (click)="onClickLogout()"matTooltip="Cerrar sesión">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-toolbar>
+<mat-drawer-container class="example-container" autosize>
   <!-- MENÚ -->
     <mat-drawer #drawer class="example-sidenav" mode="side" opened>
-      <div matListItemTitle class="menu-sections">Administración</div>
-      <mat-divider></mat-divider>
       <mat-list class="menu-list">
         <mat-list-item class="btn-menu" (click)="navigateTo('/inicio')" routerLinkActive="active">
           <mat-icon matListItemIcon class="color-white">home</mat-icon>
           <div matListItemTitle class="color-white">Inicio</div>
         </mat-list-item>
+        <div matListItemTitle class="menu-sections">Administración</div>
+        <mat-divider></mat-divider>
         <mat-list-item class="btn-menu" (click)="navigateTo('/propietarios')" routerLinkActive="active">
           <mat-icon matListItemIcon class="color-white">account_box</mat-icon>
           <div matListItemTitle class="color-white">Propietarios</div>
@@ -47,10 +49,15 @@
           <mat-icon matListItemIcon class="color-white">edit_document</mat-icon>
           <div matListItemTitle class="color-white">Contratos</div>
         </mat-list-item>
-        <mat-divider></mat-divider>
+
         <div matListItemTitle class="menu-sections">Cobranza</div>
+        <mat-divider></mat-divider>
+        <mat-list-item class="btn-menu" (click)="navigateTo('')" routerLinkActive="active" disabled>
+          <mat-icon matListItemIcon class="color-white">receipt_long</mat-icon>
+          <div matListItemTitle class="color-white">Facturación</div>
+        </mat-list-item>
         <div class="container-version">
-          <p>Agustin Ricardo - Versión 1.0</p>
+          <p>Versión 1.0</p>
         </div>
       </mat-list>
     </mat-drawer>

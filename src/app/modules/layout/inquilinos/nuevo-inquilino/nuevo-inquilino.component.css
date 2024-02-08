@@ -18,3 +18,7 @@ justify-content: space-between;
 .card-nueva-inquilino{
   padding: 30px 50px 30px 50px;
 }
+.btn_global_design{
+  background-color: #352F44 !important;
+  color: white !important;
+}
