@@ -14,6 +14,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
 import { SnackbarService } from '../../assets/snackbar.service';
 import { Propietario } from '../../models/propietario.response';
+import { TokenDecoderStorageService } from '../../../service/token-decoder-storage.service';
 
 @Component({
   selector: 'app-propietarios',
@@ -35,11 +36,11 @@ export class PropietariosComponent {
     this.router.navigate([route]);
   }
 
-  constructor(private apiService: ApiService, private router: Router, private dialogService: DialogService, private fb: FormBuilder, private snackbarService: SnackbarService) {
+  constructor(private apiService: ApiService, private router: Router, private dialogService: DialogService, private fb: FormBuilder, private snackbarService: SnackbarService, private tokenStorageService: TokenDecoderStorageService) {
     this.formGroup = this.fb.group({
       nombre: [''],
       apellido: [''],
-      dni: ['']
+      dni: [''],
     });
   }
 
@@ -60,7 +61,7 @@ export class PropietariosComponent {
 
   onSave() {
     this.formGroup.patchValue({
-      id_propietario: this.propietarioOriginal?.id_propietario
+      id_propietario: this.propietarioOriginal?.id_propietario,
     });
     const propietarioModificado: Propietario = this.formGroup.value;
     const id = this.propietarioOriginal?.id_propietario;

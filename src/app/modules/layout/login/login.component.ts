@@ -46,7 +46,7 @@ export class LoginComponent {
         const response = await this.usersService.login(this.formulario.value);
         if (!response.error) {
           localStorage.setItem('token', response.result);
-          this.router.navigate(['/inicio']);
+          location.reload();
         } else {
           console.error('Error de inicio de sesión:', response.error);
         }

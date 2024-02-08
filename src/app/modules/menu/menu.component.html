@@ -4,7 +4,7 @@
       <button mat-icon-button class="example-icon" (click)="drawer.toggle()" matTooltip="Menú">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>Gestor Inmobiliario</span>
+      <span>{{this.decodedToken.inmobiliaria_nombre}}</span>
       <span class="example-spacer"></span>
       <button mat-icon-button class="example-icon notifications-icon" matTooltip="Notificaciones" [matMenuTriggerFor]="menu">
         <mat-icon>notifications</mat-icon>

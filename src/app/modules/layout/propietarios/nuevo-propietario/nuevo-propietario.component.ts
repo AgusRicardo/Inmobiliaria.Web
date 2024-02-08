@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { NuevoPropietarioResponse } from '../../../models/nuevo-propietario.response';
 import { SnackbarService } from '../../../assets/snackbar.service';
 import { MatCardModule } from '@angular/material/card';
+import { TokenDecoderStorageService } from '../../../../service/token-decoder-storage.service';
 
 
 
@@ -20,16 +21,20 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './nuevo-propietario.component.css'
 })
 export class NuevoPropietarioComponent {
-
+  decodedToken: any;
   nuevoPropietario: NuevoPropietarioResponse = {
     nombre: '',
     apellido: '',
     dni: '',
+    inmobiliaria_id: null
   };
 
-  constructor(private apiService: ApiService, private router: Router, private snackbarService: SnackbarService) {}
+  constructor(private apiService: ApiService, private router: Router, private snackbarService: SnackbarService, private tokenStorageService: TokenDecoderStorageService) {}
 
   async guardarPropietario() {
+    this.decodedToken = this.tokenStorageService.getDecodedToken();
+    this.nuevoPropietario.inmobiliaria_id = this.decodedToken.inmobiliaria_id;
+
     if (!this.nuevoPropietario.nombre || !this.nuevoPropietario.apellido || !this.nuevoPropietario.dni) {
       this.snackbarService.openSnackBar('Todos los campos son obligatorios', 'Cerrar', 3000);
       return;

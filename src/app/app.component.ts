@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './modules/layout/login/login.component';
 import { MenuComponent } from './modules/menu/menu.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { JwtDecoderService } from './service/jwt-decoder.service';
+import { TokenDecoderStorageService } from './service/token-decoder-storage.service';
 
 
 
@@ -17,6 +19,16 @@ import { MatDialogModule } from '@angular/material/dialog';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  decodeToken: any
   ApiService = inject(ApiService)
+  private JwtDecoderService = inject(JwtDecoderService)
+  private TokenDecoderStorageService = inject(TokenDecoderStorageService)
 
+  constructor() {
+    const token = localStorage.getItem('token');
+    if (token !== null) {
+      this.decodeToken = this.JwtDecoderService.decodeToken(token);
+      this.TokenDecoderStorageService.setDecodedToken(this.decodeToken);
+    }
+  }
 }
