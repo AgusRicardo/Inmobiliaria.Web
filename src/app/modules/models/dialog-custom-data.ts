@@ -1,7 +1,7 @@
 import { TemplateRef } from "@angular/core";
-import { Propietario } from "../layout/propietarios/propietarios.component";
-import { Propiedad } from "../layout/propiedades/propiedades.component";
 import { InquilinoResponse } from "./inquilino.response";
+import { Propietario } from "./propietario.response";
+import { Propiedad } from "./propiedades.response";
 
 export interface DialogWithTemplateData {
   template: TemplateRef<any>;

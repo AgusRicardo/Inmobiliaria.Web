@@ -9,11 +9,11 @@ import { ApiService } from '../../../service/api.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { Propietario } from '../propietarios/propietarios.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { DialogService } from '../../../service/dialog.service';
 import { SnackbarService } from '../../assets/snackbar.service';
 import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
+import { Propiedad } from '../../models/propiedades.response';
 
 @Component({
   selector: 'app-propiedades',
@@ -102,12 +102,5 @@ export class PropiedadesComponent {
     const fechaFormateada = `${partesFecha[2]}/${partesFecha[1]}/${partesFecha[0]}`;
     return fechaFormateada;
   }
-}
-export interface Propiedad {
-  id_propiedad: number;
-  propietario: Propietario;
-  tipo: string;
-  direccion: string;
-  fecha_alta: string;
 }
 

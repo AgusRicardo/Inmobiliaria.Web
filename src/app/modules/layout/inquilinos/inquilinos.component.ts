@@ -14,7 +14,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
 import { SnackbarService } from '../../assets/snackbar.service';
 import { DialogService } from '../../../service/dialog.service';
-import { Propiedad } from '../propiedades/propiedades.component';
+import { Propiedad } from '../../models/propiedades.response';
 
 
 

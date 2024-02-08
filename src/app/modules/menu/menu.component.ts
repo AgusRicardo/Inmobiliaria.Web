@@ -1,9 +1,9 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatMenuModule, MatMenuTrigger} from '@angular/material/menu'
+import {MatMenuModule} from '@angular/material/menu'
 import {MatListModule} from '@angular/material/list';
 import { Router } from '@angular/router';
 import { RouterOutlet } from '@angular/router';

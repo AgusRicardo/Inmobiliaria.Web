@@ -36,6 +36,7 @@ export class ApiService {
     return this.http.get<any>(`${this.urlApi}/Propietarios/GetPropietarios/Propietario?searchTerm=${searchTerm}`, {headers: this.createHeaders()});
   }
   public createPropietario(formValue:any): Observable<any> {
+    console.log(formValue);
     return this.http.post<any>(`${this.urlApi}/Propietarios/CrearPropietario`, formValue, {headers: this.createHeaders()});
   }
   public createPropiedad(formValue:any): Observable<any> {

@@ -13,6 +13,7 @@ import { DialogService } from '../../../service/dialog.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
 import { SnackbarService } from '../../assets/snackbar.service';
+import { Propietario } from '../../models/propietario.response';
 
 @Component({
   selector: 'app-propietarios',
@@ -102,11 +103,4 @@ export class PropietariosComponent {
     const fechaFormateada = `${partesFecha[2]}/${partesFecha[1]}/${partesFecha[0]}`;
     return fechaFormateada;
   }
-}
-export interface Propietario {
-  id_propietario: number;
-  nombre: string;
-  apellido: string;
-  dni: string;
-  fecha_alta: string;
 }

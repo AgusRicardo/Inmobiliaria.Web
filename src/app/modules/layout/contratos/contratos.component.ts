@@ -9,10 +9,8 @@ import { ApiService } from '../../../service/api.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { Propietario } from '../propietarios/propietarios.component';
-import { Propiedad } from '../propiedades/propiedades.component';
-import { InquilinoResponse } from '../../models/inquilino.response';
-import { Estado } from '../../models/estado.response';
+import { Contrato } from '../../models/contratos.response';
+
 
 @Component({
   selector: 'app-contratos',
@@ -65,14 +63,4 @@ export class ContratosComponent {
     return fechaFormateada;
   }
 }
-export interface Contrato {
-  id_contrato: number;
-  propietario: Propietario;
-  propiedad: Propiedad;
-  inquilino: InquilinoResponse;
-  fecha_inicio: string;
-  fecha_fin: string;
-  monto: number;
-  fecha_alta: string;
-  estado: Estado;
-}
+

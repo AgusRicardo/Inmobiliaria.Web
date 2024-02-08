@@ -46,7 +46,6 @@ export class NuevoPropietarioComponent {
           }
         },
         (error) => {
-          console.error('Error al guardar el propietario:', error);
           this.snackbarService.openSnackBar('Error al guardar el propietario', 'Cerrar', 3000);
         }
       );
