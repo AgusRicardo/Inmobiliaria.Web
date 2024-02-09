@@ -34,7 +34,6 @@ export class NuevaPropiedadComponent {
       this.apiService.searchPropietario(inputSearch).subscribe(
         (response) => {
           this.propietariosEncontrados = response;
-          console.log('Propietarios encontrados:', this.propietariosEncontrados);
         },
         (error) => {
           console.error('Error al buscar propietarios:', error);
