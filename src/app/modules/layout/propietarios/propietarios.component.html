@@ -14,7 +14,10 @@
         <button mat-raised-button class="new-propietarios btn_global_design" (click)="navigateTo('/propietarios/nuevo-propietario')" routerLinkActive="active">Nuevo propietario</button>
       </div>
       </div>
-    <div class="mat-elevation-z8">
+        <mat-card *ngIf="noData">
+          <mat-card-content class="text-grids-empty">Aún no hay propietarios cargados.</mat-card-content>
+        </mat-card>
+    <div class="mat-elevation-z8" *ngIf="!noData">
       <div *ngIf="isLoading" class="container-spinner">
         <mat-spinner></mat-spinner>
       </div>
@@ -58,6 +61,7 @@
             </mat-menu>
           </td>
         </ng-container>
+
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

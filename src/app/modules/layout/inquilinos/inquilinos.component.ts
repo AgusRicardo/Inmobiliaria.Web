@@ -15,13 +15,14 @@ import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } fr
 import { SnackbarService } from '../../assets/snackbar.service';
 import { DialogService } from '../../../service/dialog.service';
 import { Propiedad } from '../../models/propiedades.response';
+import { MatCardModule } from '@angular/material/card';
 
 
 
 @Component({
   selector: 'app-inquilinos',
   standalone: true,
-  imports: [MatDialogClose,MatDialogTitle,MatDialogActions,MatDialogContent,ReactiveFormsModule,MatTableModule, MatPaginator, MatPaginatorModule, MatButtonModule,MatInputModule, MatMenuModule, MatIconModule, MatProgressSpinnerModule, CommonModule],
+  imports: [MatDialogClose,MatDialogTitle,MatDialogActions,MatDialogContent,ReactiveFormsModule,MatTableModule, MatPaginator, MatPaginatorModule, MatButtonModule,MatInputModule, MatMenuModule, MatIconModule, MatProgressSpinnerModule, CommonModule, MatCardModule],
   templateUrl: './inquilinos.component.html',
   styleUrl: './inquilinos.component.css'
 })
@@ -35,6 +36,7 @@ export class InquilinosComponent implements AfterViewInit {
   data: any[] = [];
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol' , 'fecha_alta', 'acciones'];
   isLoading: boolean = true;
+  noData = false;
 
   navigateTo(route: string): void {
     this.router.navigate([route]);
@@ -98,7 +100,12 @@ export class InquilinosComponent implements AfterViewInit {
       }));
       this.dataSource.data = this.data;
       this.isLoading = false;
-    });
+    },
+    error => {
+      this.noData = true;
+      this.isLoading = false;
+    }
+    );
   }
   formatoFecha(fecha: string): string {
     const partesFecha = fecha.split('-');

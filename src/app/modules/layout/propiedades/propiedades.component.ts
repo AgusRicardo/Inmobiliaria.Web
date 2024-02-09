@@ -14,11 +14,12 @@ import { DialogService } from '../../../service/dialog.service';
 import { SnackbarService } from '../../assets/snackbar.service';
 import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
 import { Propiedad } from '../../models/propiedades.response';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-propiedades',
   standalone: true,
-  imports: [MatDialogClose,MatDialogTitle,MatDialogActions,MatDialogContent,ReactiveFormsModule,MatTableModule, MatPaginator, MatPaginatorModule, MatButtonModule,MatInputModule, MatMenuModule, MatIconModule, MatProgressSpinnerModule, CommonModule],
+  imports: [MatDialogClose,MatDialogTitle,MatDialogActions,MatDialogContent,ReactiveFormsModule,MatTableModule, MatPaginator, MatPaginatorModule, MatButtonModule,MatInputModule, MatMenuModule, MatIconModule, MatProgressSpinnerModule, CommonModule, MatCardModule],
   templateUrl: './propiedades.component.html',
   styleUrl: './propiedades.component.css'
 })
@@ -29,6 +30,7 @@ export class PropiedadesComponent {
   data: any[] = [];
   dataSource = new MatTableDataSource<Propiedad>([]);
   isLoading: boolean = true;
+  noData = false;
 
   navigateTo(route: string): void {
     this.router.navigate([route]);
@@ -95,7 +97,12 @@ export class PropiedadesComponent {
       }));
       this.dataSource.data = this.data;
       this.isLoading = false;
-    });
+    },
+    error => {
+      this.noData = true;
+      this.isLoading = false;
+    }
+    );
   }
   formatoFecha(fecha: string): string {
     const partesFecha = fecha.split('-');

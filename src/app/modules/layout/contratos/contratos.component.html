@@ -14,7 +14,10 @@
         <button mat-raised-button color="primary" class="new-contratos btn_global_design" (click)="navigateTo('/contratos/nuevo-contrato')" routerLinkActive="active">Nuevo contrato</button>
       </div>
       </div>
-    <div class="mat-elevation-z8">
+      <mat-card *ngIf="noData">
+        <mat-card-content class="text-grids-empty">Aún no hay propiedades cargadas.</mat-card-content>
+      </mat-card>
+    <div class="mat-elevation-z8" *ngIf="!noData">
       <div *ngIf="isLoading" class="container-spinner">
         <mat-spinner></mat-spinner>
       </div>

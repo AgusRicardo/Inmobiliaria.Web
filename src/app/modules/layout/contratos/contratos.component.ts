@@ -10,12 +10,13 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Contrato } from '../../models/contratos.response';
+import { MatCardModule } from '@angular/material/card';
 
 
 @Component({
   selector: 'app-contratos',
   standalone: true,
-  imports: [MatTableModule, MatPaginator, MatPaginatorModule, MatButtonModule,MatInputModule, MatMenuModule, MatIconModule, MatProgressSpinnerModule, CommonModule],
+  imports: [MatTableModule, MatPaginator, MatPaginatorModule, MatButtonModule,MatInputModule, MatMenuModule, MatIconModule, MatProgressSpinnerModule, CommonModule, MatCardModule],
   templateUrl: './contratos.component.html',
   styleUrl: './contratos.component.css'
 })
@@ -24,6 +25,7 @@ export class ContratosComponent {
   data: any[] = [];
   dataSource = new MatTableDataSource<Contrato>([]);
   isLoading: boolean = true;
+  noData = false;
 
   navigateTo(route: string): void {
     this.router.navigate([route]);
@@ -55,7 +57,12 @@ export class ContratosComponent {
       }));
       this.dataSource.data = this.data;
       this.isLoading = false;
-    });
+    },
+    error => {
+      this.noData = true;
+      this.isLoading = false;
+    }
+    );
   }
   formatoFecha(fecha: string): string {
     const partesFecha = fecha.split('-');

@@ -34,3 +34,10 @@
   background-color: #352F44 !important;
   color: white !important;
 }
+.text-grids-empty{
+  text-align: center;
+  font-size: 18px;
+  margin: 20px 0px 20px 0px;
+  font-style: italic;
+  color: #352F44;
+}

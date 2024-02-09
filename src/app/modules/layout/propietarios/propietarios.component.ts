@@ -15,11 +15,12 @@ import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } fr
 import { SnackbarService } from '../../assets/snackbar.service';
 import { Propietario } from '../../models/propietario.response';
 import { TokenDecoderStorageService } from '../../../service/token-decoder-storage.service';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-propietarios',
   standalone: true,
-  imports: [MatDialogActions,MatDialogContent,ReactiveFormsModule, MatDialogTitle,MatDialogClose, MatDialogContent,MatDialogActions, MatTableModule, MatPaginator, MatPaginatorModule, MatButtonModule,MatInputModule, MatMenuModule, MatIconModule, MatProgressSpinnerModule, CommonModule],
+  imports: [MatCardModule, MatDialogActions,MatDialogContent,ReactiveFormsModule, MatDialogTitle,MatDialogClose, MatDialogContent,MatDialogActions, MatTableModule, MatPaginator, MatPaginatorModule, MatButtonModule,MatInputModule, MatMenuModule, MatIconModule, MatProgressSpinnerModule, CommonModule],
   templateUrl: './propietarios.component.html',
   styleUrl: './propietarios.component.css'
 })
@@ -82,23 +83,25 @@ export class PropietariosComponent {
   }
 
   llenarData() {
-    this.apiService.getAllOwner().subscribe(data => {
-      this.data = data.map((propietario: Propietario, index: number) => ({
-        id_propietario: propietario.id_propietario,
-        nombre: propietario.nombre,
-        apellido: propietario.apellido,
-        dni: propietario.dni,
-        fecha_alta: this.formatoFecha(propietario.fecha_alta)
-      }));
-      if (this.data.length > 0) {
+    this.apiService.getAllOwner().subscribe(
+      data => {
+        this.data = data.map((propietario: Propietario, index: number) => ({
+          id_propietario: propietario.id_propietario,
+          nombre: propietario.nombre,
+          apellido: propietario.apellido,
+          dni: propietario.dni,
+          fecha_alta: this.formatoFecha(propietario.fecha_alta)
+        }));
         this.dataSource.data = this.data;
         this.isLoading = false;
-      }else{
+      },
+      error => {
         this.noData = true;
         this.isLoading = false;
       }
-    });
+    );
   }
+
   formatoFecha(fecha: string): string {
     const partesFecha = fecha.split('-');
     const fechaFormateada = `${partesFecha[2]}/${partesFecha[1]}/${partesFecha[0]}`;

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, firstValueFrom } from 'rxjs';
+import { Observable, catchError, firstValueFrom, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,13 +18,13 @@ export class ApiService {
   }
 
   public getAllTenants(): Observable<any> {
-    return this.http.get<any>(`${this.urlApi}/Inquilinos/GetInquilinos`, {headers: this.createHeaders()});
+    return this.http.get<any>(`${this.urlApi}/Inquilinos/GetInquilinos`, { headers: this.createHeaders()})
   }
   public getAllOwner(): Observable<any> {
-    return this.http.get<any>(`${this.urlApi}/Propietarios/GetPropietarios`, {headers: this.createHeaders()});
+    return this.http.get<any>(`${this.urlApi}/Propietarios/GetPropietarios`, {headers: this.createHeaders()})
   }
   public getAllProperty(): Observable<any> {
-    return this.http.get<any>(`${this.urlApi}/Propiedades/GetPropiedades`, {headers: this.createHeaders()});
+    return this.http.get<any>(`${this.urlApi}/Propiedades/GetPropiedades`, {headers: this.createHeaders()})
   }
   public getAllGuarantor(): Observable<any> {
     return this.http.get<any>(`${this.urlApi}/Garante/GetGarantes`, {headers: this.createHeaders()});
