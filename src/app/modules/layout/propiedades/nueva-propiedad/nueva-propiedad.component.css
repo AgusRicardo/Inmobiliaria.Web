@@ -23,3 +23,10 @@ justify-content: space-between;
   background-color: #352F44 !important;
   color: white !important;
 }
+.btn-back{
+  color: #352F44 !important;
+  background-color: transparent !important;
+  border: 0px !important;
+  text-decoration: underline;
+  cursor: pointer;
+}

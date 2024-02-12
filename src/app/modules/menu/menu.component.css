@@ -3,7 +3,8 @@
 }
 .navbar-main {
   --mat-toolbar-container-text-color: white;
-  --mat-toolbar-container-background-color: #352F44
+  --mat-toolbar-container-background-color: #352F44;
+  height: 48px;
 
 }
 .example-container{
@@ -11,7 +12,7 @@
 }
 .example-sidenav{
   width: 15.5vw;
-  padding-top: 10px;
+  padding-top: 1px;
   background-color: #5C5470;
 }
 .container-menu-design{

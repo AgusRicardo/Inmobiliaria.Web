@@ -1,55 +1,93 @@
 <section class="section-nuevo-contratos">
-  <mat-stepper #stepper class="container-stepper">
-    <mat-step>
-      <form class="form-container" (ngSubmit)="onFormSubmit()">
-        <ng-template matStepLabel>Seleccionar propietario</ng-template>
-        <div class="container-search-propietario">
-          <mat-form-field class="example-form-field">
-            <mat-label>Buscar propietario</mat-label>
-
-            <input matInput type="text">
-          </mat-form-field>
-          <div class="example-button-container">
-            <button mat-mini-fab color="primary" type="submit">
-              <mat-icon>search</mat-icon>
-            </button>
-          </div>
-        </div>
-        <div class="container-btn-newContract-first">
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-      <div *ngIf="showSearchComponent">
-
-        <app-propietarios-search [searchTerm]="searchTermControl.value"/>
+  <h2>Nuevo contrato</h2>
+  <button (click)="goBack()" class="btn-back">Volver atrás</button>
+  <mat-horizontal-stepper [linear]="isLinear" #stepper class="container-stepper">
+  <!-- Seleccionar propietario -->
+  <mat-step label="step1" completed="false"
+    [stepControl]="firstFormGroup" errorMessage = "Campo requerido">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Seleccionar propietario</ng-template>
+      <mat-form-field>
+        <mat-label>Propietario</mat-label>
+        <input matInput placeholder="Propietario" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <div class="container-unique-btn">
+        <button mat-button matStepperNext class="btn-stepper">Siguiente</button>
       </div>
-    </mat-step>
+    </form>
+  </mat-step>
 
-    <mat-step [stepControl]="secondFormGroup" label="Seleccionar propiedad">
-      <app-seleccionar-propiedad></app-seleccionar-propiedad>
-        <div class="container-btn-newContract">
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-    </mat-step>
-    <mat-step [stepControl]="thirdFormGroup" label="Agregar inquilino">
-      <app-agregar-inquilino [formGroup]="thirdFormGroup"></app-agregar-inquilino>
-    </mat-step>
-    <mat-step [stepControl]="roomFormGroup" label="Agregar garantes">
-      <app-agregar-garantes></app-agregar-garantes>
-      <div class="container-btn-newContract">
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+  <!-- Seleccionar propiedad -->
+  <mat-step label="step2" completed="false"
+    [stepControl]="secondFormGroup" errorMessage = "Campo requerido">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Seleccionar propiedad</ng-template>
+      <mat-form-field>
+        <mat-label>Propiedad</mat-label>
+        <input matInput placeholder="Propiedad" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <div class="container-btn-stepper">
+        <button mat-button matStepperPrevious class="btn-stepper">Volver</button>
+        <button mat-button matStepperNext class="btn-stepper">Siguiente</button>
       </div>
-    </mat-step>
-    <mat-step>
+    </form>
+  </mat-step>
+
+  <!-- Agregar inquilino -->
+  <mat-step label="step3" completed="false"
+    [stepControl]="thirdFormGroup" errorMessage = "Campos requeridos">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Agregar inquilino</ng-template>
+      <mat-form-field>
+        <mat-label>Inquilino</mat-label>
+        <input matInput placeholder="Inquilino" formControlName="thirdCtrl" required>
+      </mat-form-field>
+      <div class="container-btn-stepper">
+        <button mat-button matStepperPrevious class="btn-stepper">Volver</button>
+        <button mat-button matStepperNext class="btn-stepper">Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- Agregar garantes -->
+  <mat-step label="step4" completed="false"
+    [stepControl]="fourthFormGroup" errorMessage = "Campos requeridos">
+    <form [formGroup]="fourthFormGroup">
+      <ng-template matStepLabel>Agregar garantes</ng-template>
+      <mat-form-field>
+        <mat-label>Garantes</mat-label>
+        <input matInput placeholder="Garantes" formControlName="fourthCtrl" required>
+      </mat-form-field>
+      <div class="container-btn-stepper">
+        <button mat-button matStepperPrevious class="btn-stepper">Volver</button>
+        <button mat-button matStepperNext class="btn-stepper">Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- Generar contrato -->
+  <mat-step label="step5" completed="false"
+    [stepControl]="fifthFormGroup" errorMessage = "Campos requeridos">
+    <form [formGroup]="fifthFormGroup">
       <ng-template matStepLabel>Generar contrato</ng-template>
-      <app-generar-contrato></app-generar-contrato>
-      <div class="container-btn-newContract">
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+      <mat-form-field>
+        <mat-label>Fecha inicio</mat-label>
+        <input matInput placeholder="Fecha Inicio" formControlName="fiveCtrl" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Fecha fin</mat-label>
+        <input matInput placeholder="Fecha fin" formControlName="sixCtrl" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Monto</mat-label>
+        <input matInput placeholder="Fecha monto" formControlName="sevenCtrl" required>
+      </mat-form-field>
+      <div class="container-btn-stepper">
+        <button mat-button matStepperPrevious class="btn-stepper">Back</button>
+        <button mat-button class="btn-stepper">Generar contrato</button>
       </div>
-    </mat-step>
-  </mat-stepper>
-
+    </form>
+  </mat-step>
+  </mat-horizontal-stepper>
 </section>
+

@@ -10,7 +10,7 @@ import { NuevoPropietarioResponse } from '../../../models/nuevo-propietario.resp
 import { SnackbarService } from '../../../assets/snackbar.service';
 import { MatCardModule } from '@angular/material/card';
 import { TokenDecoderStorageService } from '../../../../service/token-decoder-storage.service';
-
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -29,7 +29,12 @@ export class NuevoPropietarioComponent {
     inmobiliaria_id: null
   };
 
-  constructor(private apiService: ApiService, private router: Router, private snackbarService: SnackbarService, private tokenStorageService: TokenDecoderStorageService) {}
+  constructor(private apiService: ApiService, private router: Router, private snackbarService: SnackbarService, private tokenStorageService: TokenDecoderStorageService, private location: Location) {}
+
+  goBack() {
+    this.location.back();
+  }
+
 
   async guardarPropietario() {
     this.decodedToken = this.tokenStorageService.getDecodedToken();

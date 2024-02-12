@@ -1,6 +1,10 @@
 .section-nuevo-contratos{
   margin: 20px 20px 20px 20px;
 }
+.container-stepper{
+  padding: 20px 25px 20px 25px;
+  background-color: #fafafa;
+}
 .form-container{
   width: 100%;
   margin: 20px;
@@ -19,14 +23,28 @@
   padding-top: 9px;
   padding-left: 9px;
 }
-.container-btn-newContract{
+.container-stepper{
+  padding: 20px 25px 20px 25px;
+  background-color: #fafafa;
+}
+.container-unique-btn{
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-back{
+  color: #352F44 !important;
+  background-color: transparent !important;
+  border: 0px !important;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.btn-stepper{
+  color: #352F44 !important;
+}
+.container-btn-stepper{
   display: flex;
   justify-content: space-between;
 }
-.container-stepper{
-  padding: 25px 50px 25px 50px;
-}
-.container-btn-newContract-first{
-  display: flex;
-  justify-content: flex-end;
+.stepper-container-component{
+  padding-top: 100px !important;
 }

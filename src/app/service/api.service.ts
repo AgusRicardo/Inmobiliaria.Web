@@ -6,8 +6,8 @@ import { Observable, catchError, firstValueFrom, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  //private urlApi = 'https://api-inmobiliaria.azurewebsites.net/api';
-  private urlApi = 'https://localhost:7001/api';
+  private urlApi = 'https://api-inmobiliaria.azurewebsites.net/api';
+  //private urlApi = 'https://localhost:7001/api';
 
   constructor(private http: HttpClient) { }
 

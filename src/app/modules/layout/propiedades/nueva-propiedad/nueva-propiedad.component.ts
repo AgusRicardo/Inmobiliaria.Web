@@ -11,6 +11,7 @@ import { NuevaPropiedadResponse } from '../../../models/nueva-propiedad.response
 import {MatCardModule} from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-nueva-propiedad',
@@ -46,7 +47,11 @@ export class NuevaPropiedadComponent {
     this.nuevaPropiedad.id_propietario = propietario;
   }
 
-  constructor(private apiService: ApiService, private router: Router, private snackbarService: SnackbarService) {}
+  constructor(private apiService: ApiService, private router: Router, private snackbarService: SnackbarService, private location: Location) {}
+
+  goBack() {
+    this.location.back();
+  }
 
   async guardarPropiedad() {
     if (!this.nuevaPropiedad.id_propietario || !this.nuevaPropiedad.tipo || !this.nuevaPropiedad.direccion) {

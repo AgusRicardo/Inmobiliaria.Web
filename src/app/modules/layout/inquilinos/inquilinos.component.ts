@@ -34,7 +34,7 @@ export class InquilinosComponent implements AfterViewInit {
   public inquilinoResponse: InquilinoResponse[] = [];
   dataSource = new MatTableDataSource<InquilinoResponse>([]);
   data: any[] = [];
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol' , 'fecha_alta', 'acciones'];
+  displayedColumns: string[] = ['nro', 'nombre', 'apellido', 'dni' , 'fecha_alta', 'acciones'];
   isLoading: boolean = true;
   noData = false;
 

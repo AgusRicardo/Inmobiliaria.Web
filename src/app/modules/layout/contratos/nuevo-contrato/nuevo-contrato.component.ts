@@ -12,8 +12,8 @@ import { AgregarGarantesComponent } from './agregar-garantes/agregar-garantes.co
 import { AgregarInquilinoComponent } from './agregar-inquilino/agregar-inquilino.component';
 import { GenerarContratoComponent } from './generar-contrato/generar-contrato.component';
 import { SeleccionarPropiedadComponent } from './seleccionar-propiedad/seleccionar-propiedad.component';
-
-
+import { Location } from '@angular/common';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
 @Component({
   selector: 'app-nuevo-contrato',
@@ -35,18 +35,29 @@ import { SeleccionarPropiedadComponent } from './seleccionar-propiedad/seleccion
     SeleccionarPropiedadComponent
   ],
   templateUrl: './nuevo-contrato.component.html',
-  styleUrl: './nuevo-contrato.component.css'
+  styleUrl: './nuevo-contrato.component.css',
+  providers: [
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: { showError: true, displayDefaultIndicatorType: false  }
+    }
+  ]
 })
 export class NuevoContratoComponent {
   showSearchComponent: boolean = false;
   searchTermControl: FormGroup;
   @ViewChild('stepper') stepper: any;
 
-  constructor(private _formBuilder: FormBuilder) {
+  constructor(private _formBuilder: FormBuilder, private location: Location) {
     this.searchTermControl = this._formBuilder.group({
       searchTerm: [''],
     });
   }
+
+  goBack() {
+    this.location.back();
+  }
+
 
   onFormSubmit(): void {
     this.showSearchComponent = true;
@@ -61,10 +72,15 @@ export class NuevoContratoComponent {
     secondCtrl: ['', Validators.required],
   });
   thirdFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
+    thirdCtrl: ['', Validators.required],
   });
-  roomFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
+  fourthFormGroup = this._formBuilder.group({
+    fourthCtrl: ['', Validators.required],
+  });
+  fifthFormGroup = this._formBuilder.group({
+    fiveCtrl: ['', Validators.required],
+    sixCtrl: ['', Validators.required],
+    sevenCtrl: ['', Validators.required],
   });
   isLinear = false;
 }
