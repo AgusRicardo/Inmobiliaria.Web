@@ -14,3 +14,19 @@ export interface Contrato {
   fecha_alta: string;
   estado: Estado;
 }
+export interface GenerarContrato {
+  fecha_inicio: string;
+  fecha_fin: string;
+  monto: number;
+}
+export interface NuevoContrato {
+  id_propietario: number;
+  id_propiedad: number;
+  id_inquilino: number;
+  id_garante: number;
+  fecha_inicio: string;
+  fecha_fin: string;
+  monto: number;
+  id_estado: number;
+}
+

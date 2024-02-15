@@ -1,1 +1,27 @@
-<p>generar-contrato works!</p>
+<form [formGroup]="fifthFormGroup">
+  <div class="form-contrato">
+    <h4>Completar con los datos del contrato:</h4>
+    <div class="div-form">
+      <mat-form-field class="input-form">
+        <mat-label>Fecha inicio</mat-label>
+        <input matInput placeholder="Fecha Inicio" formControlName="fiveCtrl" required>
+      </mat-form-field>
+    </div>
+    <div class="div-form">
+      <mat-form-field class="input-form">
+        <mat-label>Fecha fin</mat-label>
+        <input matInput placeholder="Fecha fin" formControlName="sixCtrl" required>
+      </mat-form-field>
+    </div>
+    <div class="div-form">
+      <mat-form-field class="input-form">
+        <mat-label>Monto</mat-label>
+        <input matInput placeholder="Fecha monto" formControlName="sevenCtrl" required>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="container-btn-stepper">
+    <button mat-button matStepperPrevious class="btn-stepper">Volver</button>
+    <button mat-button class="btn-stepper">Generar contrato</button>
+  </div>
+</form>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NewInquilinoResponde } from '../../../../models/inquilino.response';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
   styleUrls: ['./agregar-inquilino.component.css']
 })
 export class AgregarInquilinoComponent{
+  @Output() nextStep = new EventEmitter<void>();
   NewInquilinoRespondes: NewInquilinoResponde[] = [];
   thirdFormGroup: FormGroup;
 
@@ -23,5 +24,10 @@ export class AgregarInquilinoComponent{
       apellidoCtrl: ['', Validators.required],
       dniCtrl: ['', Validators.required],
     });
+  }
+
+  onNextStep() {
+    console.log('Form Values:', this.thirdFormGroup.value);
+    this.nextStep.emit();
   }
 }

@@ -1,0 +1,7 @@
+.btn-stepper{
+  color: #352F44 !important;
+}
+.container-btn-stepper{
+  display: flex;
+  justify-content: space-between;
+}

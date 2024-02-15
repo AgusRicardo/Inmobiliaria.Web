@@ -1,0 +1,24 @@
+.btn-stepper{
+  color: #352F44 !important;
+}
+.container-btn-stepper{
+  display: flex;
+  justify-content: space-between;
+}
+.form-inquilino{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+.div-form{
+  width: 100% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.input-form{
+  box-sizing: none !important;
+  width: 300px !important;
+}

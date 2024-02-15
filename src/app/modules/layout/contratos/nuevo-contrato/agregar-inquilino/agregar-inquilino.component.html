@@ -1,31 +1,28 @@
 
-
-  <!-- <mat-form-field>
-    <mat-label>Nombre</mat-label>
-    <input matInput formControlName="nombreCtrl" required>
-  </mat-form-field>
-</div>
-<div>
-  <mat-form-field>
-    <mat-label>Apellido</mat-label>
-    <input matInput formControlName="apellidoCtrl" required>
-  </mat-form-field>
-</div>
-<div>
-  <mat-form-field>
-    <mat-label>DNI</mat-label>
-    <input matInput formControlName="dniCtrl" required>
-  </mat-form-field>
-</div> -->
-<div [formGroup]="thirdFormGroup">
-  <mat-label>Nombre</mat-label>
-  <input matInput formControlName="nombreCtrl" required>
-  <mat-label>Apellido</mat-label>
-  <input matInput formControlName="apellidoCtrl" required>
-  <mat-label>DNI</mat-label>
-  <input matInput formControlName="dniCtrl" required>
-</div>
-<div class="container-btn-newContract">
-  <button mat-button matStepperPrevious>Back</button>
-  <button mat-button matStepperNext>Next</button>
-</div>
+<form [formGroup]="thirdFormGroup">
+  <div class="form-inquilino">
+    <h4>Completar con información del inquilino:</h4>
+    <div class="div-form">
+      <mat-form-field class="input-form">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombreCtrl" required>
+      </mat-form-field>
+    </div>
+    <div class="div-form">
+      <mat-form-field class="input-form">
+        <mat-label>Apellido</mat-label>
+        <input matInput formControlName="apellidoCtrl" required>
+      </mat-form-field>
+    </div>
+    <div class="div-form">
+      <mat-form-field class="input-form">
+        <mat-label>DNI</mat-label>
+        <input matInput formControlName="dniCtrl" required>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="container-btn-stepper">
+    <button mat-button matStepperPrevious class="btn-stepper">Volver</button>
+    <button mat-button matStepperNext class="btn-stepper" (click)="onNextStep()">Siguiente</button>
+  </div>
+</form>

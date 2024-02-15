@@ -1,24 +1,35 @@
-<p>agregar-garantes works!</p>
 
-<!--
-        <form [formGroup]="roomFormGroup">
-        <div>
-          <mat-form-field>
-            <mat-label>Nombre</mat-label>
-            <input matInput formControlName="secondCtrl" required>
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <mat-label>Apellido</mat-label>
-            <input matInput formControlName="secondCtrl" required>
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <mat-label>DNI</mat-label>
-            <input matInput formControlName="secondCtrl" required>
-          </mat-form-field>
-        </div>
-      </form>
- -->
+<form [formGroup]="fourthFormGroup">
+  <div class="form-garantes">
+    <h4>Completar con información del garante:</h4>
+    <div class="div-form">
+      <mat-form-field class="input-form">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombreCtrl" required>
+      </mat-form-field>
+    </div>
+    <div class="div-form">
+      <mat-form-field class="input-form">
+        <mat-label>Apellido</mat-label>
+        <input matInput formControlName="apellidoCtrl" required>
+      </mat-form-field>
+    </div>
+    <div class="div-form">
+      <mat-form-field class="input-form">
+        <mat-label>DNI</mat-label>
+        <input matInput formControlName="dniCtrl" required>
+      </mat-form-field>
+    </div>
+    <div class="div-form">
+      <mat-form-field class="input-form">
+        <mat-label>Garantía</mat-label>
+        <textarea matInput formControlName="garantiaCtrl" required></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="container-btn-stepper">
+    <button mat-button matStepperPrevious class="btn-stepper">Volver</button>
+    <button mat-button matStepperNext class="btn-stepper" (click)="onNextStep()">Siguiente</button>
+  </div>
+</form>
+
